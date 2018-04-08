@@ -1,6 +1,7 @@
 package com.v6ak.zbdb.checkpoint
 
 import com.v6ak.zbdb.checkpoint.Templates.tags._
+import org.scalajs.dom.html.Input
 import scalatags.JsDom.all._
 
 class DeparturePage() extends TableFormPage{
@@ -11,7 +12,7 @@ class DeparturePage() extends TableFormPage{
 
   private val participantSelection = new ParticipantsSelectionComponent("departure-participant-selection")
 
-  override def primaryField = participantSelection.lastAdditionComponent.field
+  override def primaryField: Input = participantSelection.lastAdditionComponent.field
 
   override def formItems: Seq[Frag] = Seq[Frag](
     section(

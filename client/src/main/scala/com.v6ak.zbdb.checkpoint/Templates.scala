@@ -1,6 +1,6 @@
 package com.v6ak.zbdb.checkpoint
 
-import com.v6ak.zbdb.checkpoint.data.{DataStub, Participant, State}
+import com.v6ak.zbdb.checkpoint.data.{Participant, State}
 import org.scalajs.dom.Event
 import org.scalajs.dom.html.{Div, LI}
 import org.scalajs.dom.raw.{HTMLElement, Node}
@@ -8,7 +8,6 @@ import scalatags.JsDom
 import scalatags.JsDom.all._
 
 import scala.collection.immutable.ListMap
-import scala.util.Random
 
 object Templates {
   def radio(idPrefix: String, option: String, description: Frag): Frag = {
@@ -54,10 +53,6 @@ object Templates {
     State.GivenUpBefore -> "Skončil/skončila před tímto stanovištěm",
   )
 
-  def createParticipantsListPrototype(): Frag = ul(cls:="mdc-list mdc-list--two-line participant-list")(
-    Random.shuffle(DataStub.participants).take(5).map(participantSelectionListItem(_, ()=>(), "add")) ++ Seq(participantSelectionAddForm())
-  )
-
   def statsItem(description: String, count: Int): LI = li(cls:="mdc-list-item")(
     span(cls:="mdc-list-item__text")(
       description,
@@ -96,7 +91,7 @@ object Templates {
     statusPlaceholder = span().render
   )
 
-  def participantSelectionListItemStructure(deleteHandlerOption: Option[() => Unit], icon: String, namePlaceholder: Frag, statusPlaceholder: Frag, additionalClasses: String = "") = {
+  def participantSelectionListItemStructure(deleteHandlerOption: Option[() => Unit], icon: String, namePlaceholder: Frag, statusPlaceholder: Frag, additionalClasses: String = ""): JsDom.TypedTag[LI] = {
     li(cls:="mdc-list-item "+additionalClasses)(
       span(cls:="mdc-list-item__graphic", role:="presentation")(
         i(cls:="material-icons")(icon)
@@ -125,6 +120,5 @@ object Templates {
       )
     )
   }
-
-
+  
 }

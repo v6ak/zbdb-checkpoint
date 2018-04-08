@@ -3,7 +3,7 @@ package com.v6ak.zbdb.checkpoint
 import com.v6ak.zbdb.checkpoint.Templates.participantSelectionListItemStructure
 import com.v6ak.zbdb.checkpoint.data.DataStub
 import org.scalajs.dom.KeyboardEvent
-import org.scalajs.dom.html.LI
+import org.scalajs.dom.html.{Input, LI, UList}
 import org.scalajs.dom.raw.Node
 import scalatags.JsDom.all._
 
@@ -12,9 +12,9 @@ import scala.util.Try
 
 class ParticipantsSelectionComponent(idPrefix: String) {
 
-  var lastAdditionComponent: AdditionSubcomponent = null
+  var lastAdditionComponent: AdditionSubcomponent = _
 
-  val content = ul(cls:="mdc-list mdc-list--two-line participant-list")().render
+  val content: UList = ul(cls:="mdc-list mdc-list--two-line participant-list")().render
 
   private val subcomponents = mutable.Map[AdditionSubcomponent, Node]()
 
@@ -37,10 +37,9 @@ class ParticipantsSelectionComponent(idPrefix: String) {
   class AdditionSubcomponent(){
     private val nameSpan = span().render
     private val stateSpan = span().render
-    val field = input(
+    val field: Input = input(
       tpe := "number",
       cls := "mdc-text-field__input",
-      //id := idPrefix + "-new-item",
       size := "4",
       onkeyup := handleKeyUp _,
       onkeypress := detectChange _,
@@ -48,7 +47,7 @@ class ParticipantsSelectionComponent(idPrefix: String) {
       onblur := handleBlur _
     ).render
 
-    def isLast = this == lastAdditionComponent
+    def isLast: Boolean = this == lastAdditionComponent
 
     private def handleBlur(): Unit ={
       if((!isLast) && (field.value == "")){
