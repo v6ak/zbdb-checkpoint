@@ -9,7 +9,7 @@ class ArrivalPage() extends TableFormPage{
   private def formattedCurrentTime = {
     val now = new scala.scalajs.js.Date()
     val arrivalTime = dom.document.getElementById("arrival-time").asInstanceOf[HTMLInputElement]
-    s"${now.getHours()}:${now.getMinutes()}"
+    f"${now.getHours()}:${now.getMinutes()}%02d"
   }
 
   private val timeField = input(tpe := "time", cls := "mdc-text-field__input", id := "arrival-time", value:=formattedCurrentTime).render
