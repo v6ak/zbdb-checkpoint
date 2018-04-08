@@ -13,11 +13,15 @@ import scala.util.Try
 
 class ParticipantsSelectionComponent(idPrefix: String) {
 
-  var lastAdditionComponent = new AdditionSubcomponent()
+  var lastAdditionComponent: AdditionSubcomponent = null
 
-  val content = ul(cls:="mdc-list mdc-list--two-line participant-list")(lastAdditionComponent.content).render
+  val content = ul(cls:="mdc-list mdc-list--two-line participant-list")().render
 
   private val subcomponents = mutable.Map[AdditionSubcomponent, Node]()
+
+  {
+    addAdditionComponent()
+  }
 
   def addAdditionComponent(): Unit ={
     val subcomponent = new AdditionSubcomponent()
