@@ -39,7 +39,7 @@
         <div class="mdc-toolbar__row">
             <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
                 <span class="material-icons mdc-toolbar__menu-icon menu mdc-ripple-surface">menu</span>
-                <span class="mdc-toolbar__title">Statistiky pro <span class="checkpoint-title">…</span>
+                <span class="mdc-toolbar__title">Statistiky pro <span class="checkpoint-title">…</span></span>
             </section>
         </div>
     </header>
@@ -62,15 +62,15 @@
     <main role="main" class="mdc-toolbar-fixed-adjust">
         <div class="mdc-card">
             <div class="mdc-card__actions">
-                <button type="button" class="mdc-button mdc-button--raised trigger-arrival-modal">
+                <a href="#arrival-modal" class="mdc-button mdc-button--raised">
                     <i class="material-icons mdc-button__icon">add</i> příchod
-                </button>
+                </a>
                 <a href="#departure-modal" class="mdc-button mdc-button--raised">
                     <i class="material-icons mdc-button__icon">remove</i> odchod
                 </a>
-                <button type="button" class="mdc-button mdc-button--raised trigger-end-modal" data-target="#end-modal">
+                <a href="#end-modal" class="mdc-button mdc-button--raised">
                     <i class="material-icons mdc-button__icon">clear</i> konec
-                </button>
+                </a>
             </div>
         </div>
 
@@ -103,84 +103,6 @@
         </div>
     </div>
 </div>
-
-
-<!-- TODO: convert the dialogs to separate screens -->
-<aside id="arrival-modal"
-       class="mdc-dialog"
-       role="alertdialog"
-       aria-labelledby="my-mdc-dialog-label"
-       aria-describedby="my-mdc-dialog-description">
-    <div class="mdc-dialog__surface">
-        <header class="mdc-dialog__header">
-            <h2 class="mdc-dialog__header__title">
-                Příchod na stanoviště
-            </h2>
-        </header>
-        <section class="mdc-dialog__body">
-            <section>
-                <div class="mdc-text-field">
-                    <input type="time" class="mdc-text-field__input" id="arrival-time">
-                    <label class="mdc-floating-label" for="arrival-time">Čas příchodu</label>
-                    <div class="mdc-line-ripple"></div>
-                </div>
-            </section>
-            <section class="participant-list-section"></section>
-
-        </section>
-        <footer class="mdc-dialog__footer">
-            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Zavřít</button>
-            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-button--raised mdc-dialog__footer__button--accept">Přidat</button>
-        </footer>
-    </div>
-    <div class="mdc-dialog__backdrop"></div>
-</aside>
-
-<aside id="end-modal"
-       class="mdc-dialog"
-       role="alertdialog"
-       aria-labelledby="my-mdc-dialog-label"
-       aria-describedby="my-mdc-dialog-description">
-    <div class="mdc-dialog__surface">
-        <header class="mdc-dialog__header">
-            <h2 class="mdc-dialog__header__title">
-                Ukončení účasti v pochodu
-            </h2>
-        </header>
-        <section class="mdc-dialog__body">
-            <section class="participant-list-section"></section>
-            <div class="mdc-form-field">
-                <div class="radio">
-                    <div class="mdc-radio">
-                        <input class="mdc-radio__native-control" type="radio" id="radio-1" name="radios">
-                        <div class="mdc-radio__background">
-                            <div class="mdc-radio__outer-circle"></div>
-                            <div class="mdc-radio__inner-circle"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdc-form-field">
-                <div class="radio">
-                    <label id="radio-1-label" for="radio-1">Účastník je na stanovišti</label>
-                    <div class="mdc-radio">
-                        <input class="mdc-radio__native-control" type="radio" id="radio-2" name="radios">
-                        <div class="mdc-radio__background">
-                            <div class="mdc-radio__outer-circle"></div>
-                            <div class="mdc-radio__inner-circle"></div>
-                        </div>
-                    </div>
-                    <label id="radio-2-label" for="radio-2">Účastník oznámil, že nepřijde</label>
-                </div>
-            </div>
-        </section>
-        <footer class="mdc-dialog__footer">
-            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Zavřít</button>
-            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-button--raised mdc-dialog__footer__button--accept">Přidat</button>
-        </footer>
-    </div>
-    <div class="mdc-dialog__backdrop"></div>
-</aside>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" integrity="sha256-YUFX6dTDy0SmQW49sGqukFNApwwXsWMH1lxjAK1CRTc=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="client-jsdeps.min.js"></script>

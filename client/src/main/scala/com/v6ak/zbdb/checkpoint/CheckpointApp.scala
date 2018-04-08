@@ -15,7 +15,9 @@ class CheckpointApp(pos: Int, name: String, year: Int) {
   private val drawer = new MDCTemporaryDrawer(dom.document.querySelector(".mdc-drawer--temporary"))
 
   val DynamicPages = Map(
-    "departure-modal" -> new DeparturePage()
+    "departure-modal" -> (() => new DeparturePage()),
+    "arrival-modal" -> (() => new ArrivalPage()),
+    "end-modal" -> (() => new EndPage()),
   )
 
   val pageSwitcher = new PageSwitcher(
@@ -49,29 +51,6 @@ class CheckpointApp(pos: Int, name: String, year: Int) {
     removeAllChildren(participantsElement)
     for (participant <- DataStub.participants) {
       participantsElement.appendChild(participantTableItem(participant, dirty = math.random() > 0.9).render)
-    }
-  }
-
-  def prepareDialog(id: String)(onOpen: MDCDialog => Unit): Unit = {
-    val dialog = new MDCDialog(dom.document.getElementById(id))
-    dom.document.getElementsByClassName(s"trigger-$id").foreach { element =>
-      dom.console.log("trigger", element)
-      element.addEventListener("click", (event: Event) => {
-        onOpen(dialog)
-        dialog.lastFocusedTarget = event.target
-        dialog.show()
-      })
-    }
-  }
-
-  def prepareDialogs(): Unit = {
-    //prepareDialog("departure-modal") { dialog => }
-    prepareDialog("end-modal") { dialog => }
-    prepareDialog("arrival-modal") { dialog =>
-      val now = new scala.scalajs.js.Date()
-      val arrivalTime = dom.document.getElementById("arrival-time").asInstanceOf[HTMLInputElement]
-      arrivalTime.value = s"${now.getHours()}:${now.getMinutes()}"
-      arrivalTime.parentNode.asInstanceOf[Element].querySelector("label").classList.add("mdc-floating-label--float-above")
     }
   }
 
@@ -110,7 +89,6 @@ class CheckpointApp(pos: Int, name: String, year: Int) {
       pageSwitcher.updateActivePage()
     })
     pageSwitcher.updateActivePage()
-    prepareDialogs()
     loadParticipants()
     loadStats()
     enhanceElements(dom.document.asInstanceOf[Queryable])

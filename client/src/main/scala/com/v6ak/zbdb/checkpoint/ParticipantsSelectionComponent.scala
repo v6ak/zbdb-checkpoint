@@ -27,7 +27,6 @@ class ParticipantsSelectionComponent(idPrefix: String) {
   }
 
   def removeAdditionComponent(subcomponent: AdditionSubcomponent): Unit ={
-    dom.console.log(content.childNodes.length, subcomponent.content)
     content.removeChild(subcomponents(subcomponent))
     subcomponents.remove(subcomponent)
   }
@@ -35,7 +34,7 @@ class ParticipantsSelectionComponent(idPrefix: String) {
   class AdditionSubcomponent(){
     private val nameSpan = span().render
     private val stateSpan = span().render
-    private val field = input(
+    val field = input(
       tpe := "number",
       cls := "mdc-text-field__input",
       //id := idPrefix + "-new-item",
@@ -61,7 +60,6 @@ class ParticipantsSelectionComponent(idPrefix: String) {
       if(isLast && valueStr != ""){
         addAdditionComponent()
       }
-      dom.console.log(valueStr)
       val (name, note) = Try{valueStr.toInt}.fold(_ => ("Není číslo!", ""), id => DataStub.byId(id).fold(("Nenalezen!", ""))(participant => (participant.name, Templates.Descriptions(participant.state))))
       nameSpan.textContent = name
       stateSpan.textContent = note

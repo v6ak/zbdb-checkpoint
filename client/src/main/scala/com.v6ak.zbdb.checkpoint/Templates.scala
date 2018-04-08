@@ -11,6 +11,20 @@ import scala.collection.immutable.ListMap
 import scala.util.Random
 
 object Templates {
+  def radio(idPrefix: String, option: String, description: Frag): Frag = {
+    val radioId = s"$idPrefix-$option"
+    div(cls := "mdc-form-field")(
+      div(cls := "mdc-radio")(
+        input(cls := "mdc-radio__native-control", tpe := "radio", id := radioId, name := idPrefix),
+        div(cls := "mdc-radio__background")(
+          div(cls := "mdc-radio__outer-circle"),
+          div(cls := "mdc-radio__inner-circle"),
+        ),
+      ),
+      label(`for` := radioId)(description)
+    )
+  }
+
   def activePage(identifier: String, node: Node): Node = div(cls:="subpage", id:=identifier)(node).render
 
   object tags {
