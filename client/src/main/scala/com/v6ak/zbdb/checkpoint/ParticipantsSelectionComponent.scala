@@ -1,11 +1,10 @@
 package com.v6ak.zbdb.checkpoint
 
-import com.v6ak.zbdb.checkpoint.Templates.{participantSelectionAddForm, participantSelectionListItemStructure}
+import com.v6ak.zbdb.checkpoint.Templates.participantSelectionListItemStructure
 import com.v6ak.zbdb.checkpoint.data.DataStub
-import org.scalajs.dom
+import org.scalajs.dom.KeyboardEvent
 import org.scalajs.dom.html.LI
 import org.scalajs.dom.raw.Node
-import scalatags.JsDom
 import scalatags.JsDom.all._
 
 import scala.collection.mutable
@@ -43,7 +42,7 @@ class ParticipantsSelectionComponent(idPrefix: String) {
       cls := "mdc-text-field__input",
       //id := idPrefix + "-new-item",
       size := "4",
-      onkeyup := detectChange _,
+      onkeyup := handleKeyUp _,
       onkeypress := detectChange _,
       onchange := detectChange _,
       onblur := handleBlur _
@@ -56,6 +55,13 @@ class ParticipantsSelectionComponent(idPrefix: String) {
         removeAdditionComponent(this)
       }else{
         detectChange()
+      }
+    }
+
+    private def handleKeyUp(e: KeyboardEvent): Unit ={
+      detectChange()
+      if(e.keyCode == 13 || e.keyCode == 10){
+        lastAdditionComponent.field.focus()
       }
     }
 
