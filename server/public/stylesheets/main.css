@@ -1,6 +1,43 @@
-body {
-    padding-top: 6rem;
-}
 .hidden{
     display: none;
+}
+.mdc-card--alert{
+    background-color: #ffd93f;
+    padding: 12px;
+    margin: 12px;
+}
+.mdc-drawer__drawer .mdc-drawer__header-content{
+    background: #a21f15 url("../images/header.png") no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
+    color: white;
+    text-shadow: 0 0 2px black, 0 0 4px black, 0 0 8px black;
+}
+a.material-icons {
+    text-decoration: none;
+}
+.participant-list .mdc-list-item--add .mdc-text-field__input{
+    width: 4em;
+}
+.participant-list .mdc-list-item--add {
+    height: auto;
+}
+#welcome{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../images/header.png") no-repeat center center;
+}
+@media only screen and (max-height: 294px) {
+    #welcome {
+        background-size: contain;
+    }
+}
+@media only screen and (max-width: 294px){
+    #welcome {
+        background-size: contain;
+    }
 }

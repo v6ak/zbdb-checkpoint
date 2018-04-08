@@ -5,173 +5,185 @@
     <meta charset="utf-8">
     <title>ZBDB Checkpoint</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/material-components-web/dist/material-components-web.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
     <link rel="stylesheet" media="screen" href="stylesheets/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" integrity="sha256-xJOZHfpxLR/uhh1BwYFS5fhmOAdIRQaiOul5F/b7v3s=" crossorigin="anonymous" />
+    <link rel="icon" type="image/png" href="images/header.png">
 </head>
-<body>
+<body class="mdc-typography mdc-typography--body1">
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top nav-tabs" id="navbar">
-    <a class="navbar-brand" id="brand" href="#">…</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- TODO: migrate mdc-toolbar to Top App Bar when fixed TAB support is released (Apr 2018: it is just in master) -->
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#main">Hlavní</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#table">Tabulka</a>
-            </li>
+<aside class="mdc-drawer mdc-drawer--temporary mdc-typography">
+    <nav class="mdc-drawer__drawer">
+        <header class="mdc-drawer__header">
+            <div class="mdc-drawer__header-content">
+                <div>
+                    Stanoviště č. <span class="checkpoint-number">…</span>: <span class="checkpoint-name"></span>
+                </div>
+            </div>
+        </header>
+        <nav id="main-menu" class="mdc-drawer__content mdc-list">
+            <a class="mdc-list-item" href="#table">
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">list</i>Tabulka
+            </a>
+            <a class="mdc-list-item" href="#statistics">
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">show_chart</i> Statistiky
+            </a>
+        </nav>
+    </nav>
+</aside>
+
+<div class="subpage hidden" id="statistics">
+    <header class="mdc-toolbar mdc-toolbar--fixed">
+        <div class="mdc-toolbar__row">
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                <span class="material-icons mdc-toolbar__menu-icon menu mdc-ripple-surface">menu</span>
+                <span class="mdc-toolbar__title">Statistiky pro <span class="checkpoint-title">…</span>
+            </section>
+        </div>
+    </header>
+    <main role="main" class="mdc-toolbar-fixed-adjust">
+        <ul class="mdc-list mdc-list--two-line" id="stats">
+            <li>…</li>
         </ul>
-    </div>
-</nav>
-
-<main role="main" class="container subpage hidden" id="main">
-    <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#arrival-modal">
-        ➕ příchod
-    </button>
-    <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#departure-modal">
-        ➖ odchod
-    </button>
-    <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#end-modal">
-        ☠ konec
-    </button>
-    <h2>Statistika</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">počet</th>
-            <th scope="col">stav</th>
-        </tr>
-        </thead>
-        <tbody id="stats">
-        <tr>
-            <td colspan="2">…</td>
-        </tr>
-        </tbody>
-    </table>
-</main>
-
-<main role="main" class="container subpage hidden" id="table">
-    <div class="alert alert-warning">Tato tabulka by asi měla být editovatelná a reflektovat zapsaná data. To zatím nedělá.</div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">účastník</th>
-                <th scope="col">příchod</th>
-                <th scope="col">odchod</th>
-            </tr>
-        </thead>
-        <tbody id="participants">
-        <tr>
-            <td colspan="6">…</td>
-        </tr>
-        </tbody>
-    </table>
-</main>
-
-<div class="subpage" id="loading-progress">
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-    </div>
+    </main>
 </div>
 
-
-<div class="modal" tabindex="-1" role="dialog" id="arrival-modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Příchod na stanoviště</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+<div class="subpage hidden" id="table">
+    <header class="mdc-toolbar mdc-toolbar--fixed">
+        <div class="mdc-toolbar__row">
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                <span class="material-icons mdc-toolbar__menu-icon menu mdc-ripple-surface">menu</span>
+                <span class="mdc-toolbar__title checkpoint-title">…</span>
+            </section>
+        </div>
+    </header>
+    <main role="main" class="mdc-toolbar-fixed-adjust">
+        <div class="mdc-card">
+            <div class="mdc-card__actions">
+                <button type="button" class="mdc-button mdc-button--raised trigger-arrival-modal">
+                    <i class="material-icons mdc-button__icon">add</i> příchod
+                </button>
+                <a href="#departure-modal" class="mdc-button mdc-button--raised">
+                    <i class="material-icons mdc-button__icon">remove</i> odchod
+                </a>
+                <button type="button" class="mdc-button mdc-button--raised trigger-end-modal" data-target="#end-modal">
+                    <i class="material-icons mdc-button__icon">clear</i> konec
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="arrival-time" class="bmd-label-floating">Čas příchodu</label>
-                    <input type="time" class="form-control" id="arrival-time">
-                </div>
-                <div class="form-group">
-                    <label for="arrival-participants" class="bmd-label-floating">Účastníci</label>
-                    <input type="text" class="form-control select-participants" id="arrival-participants" placeholder="Čísla účastníků">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Přidat</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
-            </div>
         </div>
-    </div>
+
+        <div class="mdc-card mdc-card--alert">Vize: Tato tabulka by asi měla být editovatelná, řaditelná a měla by reflektovat zapsaná data.</div>
+        <div class="mdc-select">
+            <select class="mdc-select__native-control">
+                <option value="last-modified">
+                    Podle poslední změny
+                </option>
+                <option value="id">
+                    Podle startovního čísla
+                </option>
+            </select>
+            <div class="mdc-select__label mdc-select__label--float-above">Řazení</div>
+            <div class="mdc-select__bottom-line"></div>
+        </div>
+        <ul id="participants" class="mdc-list mdc-list--dense mdc-list--two-line participant-list"></ul>
+    </main>
 </div>
-<div class="modal" tabindex="-1" role="dialog" id="departure-modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Odchod ze stanoviště</h5>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="departure-time" class="bmd-label-floating">Čas odchodu</label>
-                    <input type="time" class="form-control" id="departure-time" placeholder="(aktuální čas)">
-                </div>
-                <div class="form-group">
-                    <label for="departure-participants" class="bmd-label-floating">Účastníci</label>
-                    <input type="text" class="form-control select-participants" id="departure-participants" placeholder="Čísla účastníků">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
-            </div>
+
+<div class="subpage" id="welcome">
+    <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate">
+        <div class="mdc-linear-progress__buffering-dots"></div>
+        <div class="mdc-linear-progress__buffer"></div>
+        <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+            <span class="mdc-linear-progress__bar-inner"></span>
+        </div>
+        <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+            <span class="mdc-linear-progress__bar-inner"></span>
         </div>
     </div>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog" id="end-modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Ukončení účasti</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="alert alert-warning">Co když někdo přišel a zrovna řekl, že končí?</div>
-                    <div class="form-group">
-                        <label for="ending-participants" class="bmd-label-floating">Účastníci</label>
-                        <input type="text" class="form-control select-participants" id="ending-participants" placeholder="Čísla účastníků">
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="endType" id="endType1" value="option1" checked>
-                            Účastník přišel
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="endType" id="endType2" value="option2">
-                            Účastník oznámil, že nepřijde
-                        </label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
-            </div>
-        </div>
+
+<!-- TODO: convert the dialogs to separate screens -->
+<aside id="arrival-modal"
+       class="mdc-dialog"
+       role="alertdialog"
+       aria-labelledby="my-mdc-dialog-label"
+       aria-describedby="my-mdc-dialog-description">
+    <div class="mdc-dialog__surface">
+        <header class="mdc-dialog__header">
+            <h2 class="mdc-dialog__header__title">
+                Příchod na stanoviště
+            </h2>
+        </header>
+        <section class="mdc-dialog__body">
+            <section>
+                <div class="mdc-text-field">
+                    <input type="time" class="mdc-text-field__input" id="arrival-time">
+                    <label class="mdc-floating-label" for="arrival-time">Čas příchodu</label>
+                    <div class="mdc-line-ripple"></div>
+                </div>
+            </section>
+            <section class="participant-list-section"></section>
+
+        </section>
+        <footer class="mdc-dialog__footer">
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Zavřít</button>
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-button--raised mdc-dialog__footer__button--accept">Přidat</button>
+        </footer>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js" integrity="sha256-FcVIknBiVRk5KLQeIBb9VQdtFRMqwffXyZ+D8q0gQro=" crossorigin="anonymous"></script>
+    <div class="mdc-dialog__backdrop"></div>
+</aside>
+
+<aside id="end-modal"
+       class="mdc-dialog"
+       role="alertdialog"
+       aria-labelledby="my-mdc-dialog-label"
+       aria-describedby="my-mdc-dialog-description">
+    <div class="mdc-dialog__surface">
+        <header class="mdc-dialog__header">
+            <h2 class="mdc-dialog__header__title">
+                Ukončení účasti v pochodu
+            </h2>
+        </header>
+        <section class="mdc-dialog__body">
+            <section class="participant-list-section"></section>
+            <div class="mdc-form-field">
+                <div class="radio">
+                    <div class="mdc-radio">
+                        <input class="mdc-radio__native-control" type="radio" id="radio-1" name="radios">
+                        <div class="mdc-radio__background">
+                            <div class="mdc-radio__outer-circle"></div>
+                            <div class="mdc-radio__inner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdc-form-field">
+                <div class="radio">
+                    <label id="radio-1-label" for="radio-1">Účastník je na stanovišti</label>
+                    <div class="mdc-radio">
+                        <input class="mdc-radio__native-control" type="radio" id="radio-2" name="radios">
+                        <div class="mdc-radio__background">
+                            <div class="mdc-radio__outer-circle"></div>
+                            <div class="mdc-radio__inner-circle"></div>
+                        </div>
+                    </div>
+                    <label id="radio-2-label" for="radio-2">Účastník oznámil, že nepřijde</label>
+                </div>
+            </div>
+        </section>
+        <footer class="mdc-dialog__footer">
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Zavřít</button>
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-button--raised mdc-dialog__footer__button--accept">Přidat</button>
+        </footer>
+    </div>
+    <div class="mdc-dialog__backdrop"></div>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" integrity="sha256-YUFX6dTDy0SmQW49sGqukFNApwwXsWMH1lxjAK1CRTc=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="client-jsdeps.min.js"></script>
 <script type="text/javascript" src="client-opt.js"></script>
 </body>
 </html>
