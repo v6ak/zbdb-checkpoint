@@ -1,7 +1,7 @@
 val material = "org.webjars.npm" % "material-components-web" % "0.34.1"
 
-lazy val server = (project in file("server")).settings(commonSettings).settings(
-  scalaJSProjects := Seq(client),
+lazy val webapp = (project in file("webapp")).settings(commonSettings).settings(
+  scalaJSProjects := Seq(frontendScripts),
   pipelineStages in Assets := Seq(scalaJSPipeline),
   pipelineStages := Seq(digest, gzip),
   // triggers scalaJSPipeline when using compile or continuous compilation
@@ -17,7 +17,7 @@ lazy val server = (project in file("server")).settings(commonSettings).settings(
 ).enablePlugins(PlayScala).
   dependsOn(sharedJvm)
 
-lazy val client = (project in file("client")).settings(commonSettings).settings(
+lazy val frontendScripts = (project in file("frontend-scripts")).settings(commonSettings).settings(
   scalaJSUseMainModuleInitializer := true,
   libraryDependencies ++= Seq(
     "org.scala-js" %%% "scalajs-dom" % "0.9.4",
@@ -38,5 +38,5 @@ lazy val commonSettings = Seq(
   organization := "com.v6ak"
 )
 
-// loads the server project at sbt startup
-onLoad in Global := (onLoad in Global).value andThen {s: State => "project server" :: s}
+// loads the webapp project at sbt startup
+onLoad in Global := (onLoad in Global).value andThen {s: State => "project webapp" :: s}

@@ -23,7 +23,7 @@ if [ -e target/assets ]; then
 fi
 mkdir -p target
 mkdir target/assets
-unzip -d target/assets "./server/target/scala-$scalaVersion/server_$scalaVersion-$version-web-assets.jar"
+unzip -d target/assets "./webapp/target/scala-$scalaVersion/server_$scalaVersion-$version-web-assets.jar"
 
 
 if [ -e pack.zip ]; then
