@@ -3,9 +3,9 @@
 # ~~~~
 
 # Home page
-GET        /                             controllers.Assets.at(file = "index.html")
+GET        /                                     controllers.Assets.at(file = "index.html")
 # Redirect routes that differ in development and production
-GET        /client-opt.js                com.v6ak.zbdb.checkpoint.controllers.Redirector.redirect(target: String = "/client-fastopt.js")
-GET        /client-jsdeps.min.js         com.v6ak.zbdb.checkpoint.controllers.Redirector.redirect(target: String = "/client-jsdeps.js")
+GET        /frontendscripts-opt.js               com.v6ak.zbdb.checkpoint.controllers.Redirector.redirect(target: String = "/frontendscripts-fastopt.js")
+GET        /frontendscripts-jsdeps.min.js        com.v6ak.zbdb.checkpoint.controllers.Redirector.redirect(target: String = "/frontendscripts-jsdeps.js")
 # Serve all the static files. Prefix must match `play.assets.urlPrefix`
-GET        /*file        controllers.Assets.versioned(path="/public", file: Asset)
+GET        /*file                                controllers.Assets.versioned(path="/public", file: Asset)
