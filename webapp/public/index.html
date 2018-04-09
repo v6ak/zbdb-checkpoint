@@ -23,14 +23,22 @@
                 </div>
             </div>
         </header>
-        <nav id="main-menu" class="mdc-drawer__content mdc-list">
-            <a class="mdc-list-item" href="#table">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">list</i>Tabulka
-            </a>
-            <a class="mdc-list-item" href="#statistics">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">show_chart</i> Statistiky
-            </a>
-        </nav>
+        <section class="mdc-drawer__content" id="main-menu">
+            <nav class="mdc-list">
+                <a class="mdc-list-item" href="#table">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">list</i>Tabulka
+                </a>
+                <a class="mdc-list-item" href="#statistics">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">show_chart</i> Statistiky
+                </a>
+            </nav>
+            <hr class="mdc-list-divider">
+            <nav class="mdc-drawer__content mdc-list">
+                <a class="mdc-list-item" href="#about">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">info</i> O aplikaci
+                </a>
+            </nav>
+        </section>
     </nav>
 </aside>
 
@@ -88,6 +96,24 @@
             <div class="mdc-select__bottom-line"></div>
         </div>
         <ul id="participants" class="mdc-list mdc-list--dense mdc-list--two-line participant-list"></ul>
+    </main>
+</div>
+
+<div class="subpage hidden" id="about">
+    <header class="mdc-toolbar mdc-toolbar--fixed">
+        <div class="mdc-toolbar__row">
+            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                <span class="material-icons mdc-toolbar__menu-icon menu mdc-ripple-surface">menu</span>
+                <span class="mdc-toolbar__title">O aplikaci</span>
+            </section>
+        </div>
+    </header>
+    <main role="main" class="mdc-toolbar-fixed-adjust">
+        <div>
+            <a href="https://github.com/v6ak/zbdb-checkpoint" target="_blank">
+                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">code</i> Zdrojový kód
+            </a>
+        </div>
     </main>
 </div>
 
