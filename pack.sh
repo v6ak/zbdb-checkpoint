@@ -5,6 +5,8 @@ set -u
 set -e
 set -o pipefail
 
+subproject=webapp
+
 "$(which sbt activator | head -n1)" dist
 
 # TODO: Fix getting version number from SBT and remove hardcoded versions
@@ -23,7 +25,7 @@ if [ -e target/assets ]; then
 fi
 mkdir -p target
 mkdir target/assets
-unzip -d target/assets "./webapp/target/scala-$scalaVersion/server_$scalaVersion-$version-web-assets.jar"
+unzip -d target/assets "./$subproject/target/scala-$scalaVersion/${subproject}_$scalaVersion-$version-web-assets.jar"
 
 
 if [ -e pack.zip ]; then
