@@ -3,6 +3,7 @@ package com.v6ak.zbdb.checkpoint.views
 import com.v6ak.mdc.drawer.MDCTemporaryDrawer
 import com.v6ak.zbdb.checkpoint.ApplicationContext
 import com.v6ak.zbdb.checkpoint.Templates.tags._
+import com.v6ak.zbdb.checkpoint.Util.linkTo
 import com.v6ak.zbdb.checkpoint.routing.{AboutState, RoutingState, StatisticsState, TableState}
 import io.udash.{ContainerView, _}
 import org.scalajs.dom.Element
@@ -13,7 +14,7 @@ class RootView(applicationContext: ApplicationContext) extends ContainerView {
 
   private def item(state: RoutingState, icon: String, name: String): JsDom.Modifier = {
     val classNameProp = applicationContext.application.currentStateProperty.transform(currentState => if(currentState == state) " mdc-list-item--activated" else "").transform("mdc-list-item"+_)
-    a(cls.bind(classNameProp), href := "#"+applicationContext.application.matchState(state).value)(
+    a(cls.bind(classNameProp), href := linkTo(state))(
       i(cls := "material-icons mdc-list-item__graphic", attr("aria-hidden") := "true", icon),
       name
     )
