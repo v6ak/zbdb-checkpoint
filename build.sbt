@@ -19,9 +19,11 @@ lazy val webapp = (project in file("webapp")).settings(commonSettings).settings(
 
 lazy val frontendScripts = (project in file("frontend-scripts")).settings(commonSettings).settings(
   scalaJSUseMainModuleInitializer := true,
+  resolvers += Resolver.jcenterRepo,
   libraryDependencies ++= Seq(
     "org.scala-js" %%% "scalajs-dom" % "0.9.4",
     "com.lihaoyi" %%% "scalatags" % "0.6.7",
+    "com.definitelyscala" %%% "scala-js-googlepicker" % "1.0.2",
   ),
   jsDependencies ++= Seq(
     material / "dist/material-components-web.min.js"
