@@ -1,8 +1,9 @@
-package com.v6ak.zbdb.checkpoint
+package com.v6ak.zbdb.checkpoint.components
 
 import com.v6ak.udash.mdc.MDCTextInputWrapper
-import com.v6ak.zbdb.checkpoint.Templates.participantSelectionListItemStructure
+import com.v6ak.zbdb.checkpoint.legacy.Templates.participantSelectionListItemStructure
 import com.v6ak.zbdb.checkpoint.data.DataStub
+import com.v6ak.zbdb.checkpoint.legacy.Templates
 import org.scalajs.dom.KeyboardEvent
 import org.scalajs.dom.html.{Input, LI, UList}
 import org.scalajs.dom.raw.Node

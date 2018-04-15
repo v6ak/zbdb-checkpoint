@@ -1,8 +1,9 @@
 package com.v6ak.zbdb.checkpoint.views
 
 import com.v6ak.udash.mdc.MDCTextFieldComponent
-import com.v6ak.zbdb.checkpoint.Templates.tags._
-import com.v6ak.zbdb.checkpoint.{ApplicationContext, ParticipantsSelectionComponent}
+import com.v6ak.zbdb.checkpoint.legacy.Templates.tags._
+import com.v6ak.zbdb.checkpoint.ApplicationContext
+import com.v6ak.zbdb.checkpoint.components.ParticipantsSelectionComponent
 import org.scalajs.dom.html.Input
 import scalatags.JsDom.all._
 

@@ -1,5 +1,6 @@
-package com.v6ak.zbdb.checkpoint
+package com.v6ak.zbdb.checkpoint.legacy
 
+import com.v6ak.zbdb.checkpoint.ApplicationContext
 import com.v6ak.zbdb.checkpoint.Util._
 import com.v6ak.zbdb.checkpoint.data.{Participant, State}
 import com.v6ak.zbdb.checkpoint.routing.RoutingState

@@ -1,7 +1,7 @@
 package com.v6ak.zbdb.checkpoint.views
 
 import com.v6ak.zbdb.checkpoint.ApplicationContext
-import com.v6ak.zbdb.checkpoint.Templates._
+import com.v6ak.zbdb.checkpoint.legacy.Templates._
 import com.v6ak.zbdb.checkpoint.data.DataStub
 import org.scalajs.dom.Element
 import scalatags.JsDom.all._

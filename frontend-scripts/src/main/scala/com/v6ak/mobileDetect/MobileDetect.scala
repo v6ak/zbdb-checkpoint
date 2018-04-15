@@ -1,4 +1,4 @@
-package com.v6ak.zbdb.checkpoint
+package com.v6ak.mobileDetect
 
 import org.scalajs.dom
 

@@ -2,7 +2,7 @@ package com.v6ak.zbdb.checkpoint.views
 
 import com.v6ak.mdc.drawer.MDCTemporaryDrawer
 import com.v6ak.zbdb.checkpoint.ApplicationContext
-import com.v6ak.zbdb.checkpoint.Templates.tags._
+import com.v6ak.zbdb.checkpoint.legacy.Templates.tags._
 import com.v6ak.zbdb.checkpoint.Util.linkTo
 import com.v6ak.zbdb.checkpoint.routing.{AboutState, RoutingState, StatisticsState, TableState}
 import io.udash.{ContainerView, _}

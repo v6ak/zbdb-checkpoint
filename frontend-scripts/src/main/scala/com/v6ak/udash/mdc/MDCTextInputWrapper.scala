@@ -1,7 +1,7 @@
 package com.v6ak.udash.mdc
 
 import com.v6ak.mdc.textField.MDCTextField
-import com.v6ak.zbdb.checkpoint.MobileDetect.globalMobileDetection
+import com.v6ak.mobileDetect.MobileDetect.globalMobileDetection
 import org.scalajs.dom.Element
 import org.scalajs.dom.ext._
 

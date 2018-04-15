@@ -1,7 +1,9 @@
 package com.v6ak.zbdb.checkpoint.views
 
-import com.v6ak.zbdb.checkpoint.Templates.tags._
-import com.v6ak.zbdb.checkpoint.{ApplicationContext, ParticipantsSelectionComponent, Templates}
+import com.v6ak.zbdb.checkpoint.legacy.Templates.tags._
+import com.v6ak.zbdb.checkpoint.components.ParticipantsSelectionComponent
+import com.v6ak.zbdb.checkpoint.ApplicationContext
+import com.v6ak.zbdb.checkpoint.legacy.Templates
 import org.scalajs.dom.html.Input
 import scalatags.JsDom.all._
 

@@ -1,7 +1,7 @@
 package com.v6ak.zbdb.checkpoint.views
 
 import com.v6ak.zbdb.checkpoint.ApplicationContext
-import com.v6ak.zbdb.checkpoint.Templates._
+import com.v6ak.zbdb.checkpoint.legacy.Templates._
 import com.v6ak.zbdb.checkpoint.Util._
 import com.v6ak.zbdb.checkpoint.data.DataStub
 import com.v6ak.zbdb.checkpoint.routing._

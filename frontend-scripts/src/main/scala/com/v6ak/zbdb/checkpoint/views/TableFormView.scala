@@ -1,8 +1,8 @@
 package com.v6ak.zbdb.checkpoint.views
 
 import com.v6ak.zbdb.checkpoint.ApplicationContext
-import com.v6ak.zbdb.checkpoint.Templates._
-import com.v6ak.zbdb.checkpoint.Templates.tags._
+import com.v6ak.zbdb.checkpoint.legacy.Templates._
+import com.v6ak.zbdb.checkpoint.legacy.Templates.tags._
 import com.v6ak.zbdb.checkpoint.routing.TableState
 import io.udash.core.ContainerView
 import org.scalajs.dom.Element
