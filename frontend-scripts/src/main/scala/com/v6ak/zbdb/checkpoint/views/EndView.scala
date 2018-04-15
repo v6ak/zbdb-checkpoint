@@ -1,14 +1,17 @@
-package com.v6ak.zbdb.checkpoint
+package com.v6ak.zbdb.checkpoint.views
+
 import com.v6ak.zbdb.checkpoint.Templates.tags._
+import com.v6ak.zbdb.checkpoint.{ApplicationContext, ParticipantsSelectionComponent, Templates}
+import org.scalajs.dom.html.Input
 import scalatags.JsDom.all._
 
 
-class EndPage() extends TableFormPage{
+class EndView(implicit protected val applicationContext: ApplicationContext) extends TableFormView{
   override def pageTitle: String = "Ukončení účasti v pochodu"
 
   private val participantSelection = new ParticipantsSelectionComponent("end-participant-selection")
 
-  override def primaryField = participantSelection.lastAdditionComponent.field
+  override def primaryField: Input = participantSelection.lastAdditionComponent.field
 
   override def formItems: Seq[Frag] = Seq(
     participantSelection.content,
@@ -16,6 +19,5 @@ class EndPage() extends TableFormPage{
       Templates.radio("end-type", "arrived", "Účastník je na stanovišti"),
       Templates.radio("end-type", "will-not-arrive", "Účastník oznámil, že nepřijde"),
     )
-
   )
 }

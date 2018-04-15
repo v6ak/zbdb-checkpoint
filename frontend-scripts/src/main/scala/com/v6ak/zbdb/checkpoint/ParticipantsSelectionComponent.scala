@@ -1,5 +1,6 @@
 package com.v6ak.zbdb.checkpoint
 
+import com.v6ak.udash.mdc.MDCTextInputWrapper
 import com.v6ak.zbdb.checkpoint.Templates.participantSelectionListItemStructure
 import com.v6ak.zbdb.checkpoint.data.DataStub
 import org.scalajs.dom.KeyboardEvent
@@ -78,11 +79,11 @@ class ParticipantsSelectionComponent(idPrefix: String) {
         additionalClasses = "mdc-list-item--add",
         deleteHandlerOption = None,
         icon = "add",
-        namePlaceholder = div(cls := "mdc-text-field")(
+        namePlaceholder = MDCTextInputWrapper(div(cls := "mdc-text-field")(
           field,
           nameSpan,
           div(cls := "mdc-line-ripple")
-        ),
+        ).render),
         statusPlaceholder = stateSpan
       ).render
     }

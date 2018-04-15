@@ -1,15 +1,15 @@
-package com.v6ak.zbdb.checkpoint
+package com.v6ak.zbdb.checkpoint.views
+
+import com.v6ak.udash.mdc.MDCTextFieldComponent
 import com.v6ak.zbdb.checkpoint.Templates.tags.section
-import org.scalajs.dom
+import com.v6ak.zbdb.checkpoint.{ApplicationContext, ParticipantsSelectionComponent}
 import org.scalajs.dom.html.Input
-import org.scalajs.dom.raw.HTMLInputElement
 import scalatags.JsDom.all._
 
-class ArrivalPage() extends TableFormPage{
+class ArrivalView(implicit protected val applicationContext: ApplicationContext) extends TableFormView{
 
   private def formattedCurrentTime = {
     val now = new scala.scalajs.js.Date()
-    val arrivalTime = dom.document.getElementById("arrival-time").asInstanceOf[HTMLInputElement]
     f"${now.getHours()}:${now.getMinutes()}%02d"
   }
 
@@ -21,10 +21,9 @@ class ArrivalPage() extends TableFormPage{
 
   override def formItems: Seq[Frag] = Seq[Frag](
     section(
-      div(cls:="mdc-text-field")(
+      MDCTextFieldComponent(
         timeField,
-        label(cls:="mdc-floating-label mdc-floating-label--float-above", `for`:="departure-time")("Čas příchodu"),
-        div(cls:="mdc-line-ripple"),
+        "Čas příchodu",
       )
     ),
     participantSelection.content

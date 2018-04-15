@@ -1,3 +1,5 @@
+val udashVersion = "0.6.1"
+
 val material = "org.webjars.npm" % "material-components-web" % "0.34.1"
 
 lazy val webapp = (project in file("webapp")).settings(commonSettings).settings(
@@ -22,6 +24,7 @@ lazy val frontendScripts = (project in file("frontend-scripts")).settings(common
   libraryDependencies ++= Seq(
     "org.scala-js" %%% "scalajs-dom" % "0.9.4",
     "com.lihaoyi" %%% "scalatags" % "0.6.7",
+    "io.udash" %%% "udash-core-frontend" % udashVersion,
   ),
   jsDependencies ++= Seq(
     material / "dist/material-components-web.min.js"

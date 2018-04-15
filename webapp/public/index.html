@@ -12,111 +12,6 @@
 </head>
 <body class="mdc-typography mdc-typography--body1">
 
-<!-- TODO: migrate mdc-toolbar to Top App Bar when fixed TAB support is released (Apr 2018: it is just in master) -->
-
-<aside class="mdc-drawer mdc-drawer--temporary mdc-typography">
-    <nav class="mdc-drawer__drawer">
-        <header class="mdc-drawer__header">
-            <div class="mdc-drawer__header-content">
-                <div>
-                    Stanoviště č. <span class="checkpoint-number">…</span>: <span class="checkpoint-name"></span>
-                </div>
-            </div>
-        </header>
-        <section class="mdc-drawer__content" id="main-menu">
-            <nav class="mdc-list">
-                <a class="mdc-list-item" href="#table">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">list</i>Tabulka
-                </a>
-                <a class="mdc-list-item" href="#statistics">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">show_chart</i> Statistiky
-                </a>
-            </nav>
-            <hr class="mdc-list-divider">
-            <nav class="mdc-drawer__content mdc-list">
-                <a class="mdc-list-item" href="#about">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">info</i> O aplikaci
-                </a>
-            </nav>
-        </section>
-    </nav>
-</aside>
-
-<div class="subpage hidden" id="statistics">
-    <header class="mdc-toolbar mdc-toolbar--fixed">
-        <div class="mdc-toolbar__row">
-            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                <span class="material-icons mdc-toolbar__menu-icon menu mdc-ripple-surface">menu</span>
-                <span class="mdc-toolbar__title">Statistiky pro <span class="checkpoint-title">…</span></span>
-            </section>
-        </div>
-    </header>
-    <main role="main" class="mdc-toolbar-fixed-adjust">
-        <ul class="mdc-list mdc-list--two-line" id="stats">
-            <li>…</li>
-        </ul>
-    </main>
-</div>
-
-<div class="subpage hidden" id="table">
-    <header class="mdc-toolbar mdc-toolbar--fixed">
-        <div class="mdc-toolbar__row">
-            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                <span class="material-icons mdc-toolbar__menu-icon menu mdc-ripple-surface">menu</span>
-                <span class="mdc-toolbar__title checkpoint-title">…</span>
-            </section>
-        </div>
-    </header>
-    <main role="main" class="mdc-toolbar-fixed-adjust">
-        <div class="mdc-card">
-            <div class="mdc-card__actions">
-                <a href="#arrival-modal" class="mdc-button mdc-button--raised">
-                    <i class="material-icons mdc-button__icon">add</i> příchod
-                </a>
-                <a href="#departure-modal" class="mdc-button mdc-button--raised">
-                    <i class="material-icons mdc-button__icon">remove</i> odchod
-                </a>
-                <a href="#end-modal" class="mdc-button mdc-button--raised">
-                    <i class="material-icons mdc-button__icon">clear</i> konec
-                </a>
-            </div>
-        </div>
-
-        <div class="mdc-card mdc-card--alert">Vize: Tato tabulka by asi měla být editovatelná, řaditelná a měla by reflektovat zapsaná data.</div>
-        <div class="mdc-select">
-            <select class="mdc-select__native-control">
-                <option value="last-modified">
-                    Podle poslední změny
-                </option>
-                <option value="id">
-                    Podle startovního čísla
-                </option>
-            </select>
-            <div class="mdc-select__label mdc-select__label--float-above">Řazení</div>
-            <div class="mdc-select__bottom-line"></div>
-        </div>
-        <ul id="participants" class="mdc-list mdc-list--dense mdc-list--two-line participant-list"></ul>
-    </main>
-</div>
-
-<div class="subpage hidden" id="about">
-    <header class="mdc-toolbar mdc-toolbar--fixed">
-        <div class="mdc-toolbar__row">
-            <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                <span class="material-icons mdc-toolbar__menu-icon menu mdc-ripple-surface">menu</span>
-                <span class="mdc-toolbar__title">O aplikaci</span>
-            </section>
-        </div>
-    </header>
-    <main role="main" class="mdc-toolbar-fixed-adjust">
-        <div>
-            <a href="https://github.com/v6ak/zbdb-checkpoint" target="_blank">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">code</i> Zdrojový kód
-            </a>
-        </div>
-    </main>
-</div>
-
 <div class="subpage" id="welcome">
     <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate">
         <div class="mdc-linear-progress__buffering-dots"></div>
@@ -129,6 +24,8 @@
         </div>
     </div>
 </div>
+
+<div id="application"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" integrity="sha256-YUFX6dTDy0SmQW49sGqukFNApwwXsWMH1lxjAK1CRTc=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="frontendscripts-jsdeps.min.js"></script>

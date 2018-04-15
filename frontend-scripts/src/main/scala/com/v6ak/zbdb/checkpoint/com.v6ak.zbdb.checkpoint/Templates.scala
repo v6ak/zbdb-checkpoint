@@ -1,9 +1,11 @@
 package com.v6ak.zbdb.checkpoint
 
+import com.v6ak.zbdb.checkpoint.Util._
 import com.v6ak.zbdb.checkpoint.data.{Participant, State}
+import com.v6ak.zbdb.checkpoint.routing.RoutingState
 import org.scalajs.dom.Event
-import org.scalajs.dom.html.{Div, LI}
-import org.scalajs.dom.raw.{HTMLElement, Node}
+import org.scalajs.dom.html.{Div, Element, LI}
+import org.scalajs.dom.raw.HTMLElement
 import scalatags.JsDom
 import scalatags.JsDom.all._
 
@@ -24,25 +26,40 @@ object Templates {
     )
   }
 
-  def activePage(identifier: String, node: Node): Node = div(cls:="subpage", id:=identifier)(node).render
-
   object tags {
     val section = typedTag[HTMLElement]("section")
     val main = typedTag[HTMLElement]("main")
+    val aside = typedTag[HTMLElement]("aside")
+    val nav = typedTag[HTMLElement]("nav")
   }
   import tags._
 
-  def dialogHeader(title: String, backLink: String) = header(cls:="mdc-toolbar mdc-toolbar--fixed")(
+  // TODO: migrate mdc-toolbar to Top App Bar when fixed TAB support is released (Apr 2018: it is just in master)
+  def toolbar(leftButton: Frag, title: String, actionButtons: Seq[Frag] = Seq()) = header(cls:="mdc-toolbar mdc-toolbar--fixed")(
     div(cls:="mdc-toolbar__row")(
       section(cls:="mdc-toolbar__section mdc-toolbar__section--align-start")(
-        a(href:=backLink, cls:="material-icons mdc-toolbar__menu-icon mdc-ripple-surface")("clear"),
+        leftButton,
         span(cls:="mdc-toolbar__title")(title)
       ),
-      section(cls:="mdc-toolbar__section mdc-toolbar__section--align-end", role:="toolbar")(
-        button(cls:="material-icons mdc-toolbar__icon")("done")
-      )
+      actionButtons match{
+        case Seq() => ""
+        case nonEmptyActionButtons => section(cls:="mdc-toolbar__section mdc-toolbar__section--align-end", role:="toolbar")(nonEmptyActionButtons)
+      }
     )
   )
+
+  def dialogHeader(title: String, backLink: RoutingState)(implicit applicationContext: ApplicationContext) = toolbar(
+    a(href:=linkTo(backLink), cls:="material-icons mdc-toolbar__menu-icon mdc-ripple-surface")("clear"),
+    title,
+    Seq(button(cls:="material-icons mdc-toolbar__icon")("done"))
+  )
+
+  def appHeader(title: String)(implicit applicationContext: ApplicationContext): JsDom.TypedTag[Element] = toolbar(
+    span(cls:="material-icons mdc-toolbar__menu-icon mdc-ripple-surface", onclick := {(_: Any) => {applicationContext.drawer.open = true}})("menu"),
+    title
+  )
+
+  def appContent(frags: Frag*): JsDom.TypedTag[HTMLElement] = main(role := "main", cls := "mdc-toolbar-fixed-adjust")(frags)
 
   val Descriptions = ListMap[State, String](
     State.Unknown -> "Není zaznamenán/zaznamenána na předchozím stanovišti",
@@ -79,16 +96,6 @@ object Templates {
     icon = icon,
     namePlaceholder = s"${participant.id}: ${participant.name}",
     statusPlaceholder = Descriptions(participant.state)
-  )
-
-  def participantSelectionAddForm(): JsDom.TypedTag[LI] = participantSelectionListItemStructure(
-    deleteHandlerOption = None,
-    icon = "add",
-    namePlaceholder = div(cls:="mdc-text-field")(
-      input(tpe:="text", cls:="mdc-text-field__input", id:="new-item", size:="4"),
-      div(cls:="mdc-line-ripple")
-    ),
-    statusPlaceholder = span().render
   )
 
   def participantSelectionListItemStructure(deleteHandlerOption: Option[() => Unit], icon: String, namePlaceholder: Frag, statusPlaceholder: Frag, additionalClasses: String = ""): JsDom.TypedTag[LI] = {

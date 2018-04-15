@@ -1,10 +1,12 @@
-package com.v6ak.zbdb.checkpoint
+package com.v6ak.zbdb.checkpoint.views
 
+import com.v6ak.udash.mdc.MDCTextFieldComponent
 import com.v6ak.zbdb.checkpoint.Templates.tags._
+import com.v6ak.zbdb.checkpoint.{ApplicationContext, ParticipantsSelectionComponent}
 import org.scalajs.dom.html.Input
 import scalatags.JsDom.all._
 
-class DeparturePage() extends TableFormPage{
+class DepartureView(implicit protected val applicationContext: ApplicationContext) extends TableFormView{
 
   override def pageTitle: String = "Odchod ze stanoviště"
 
@@ -16,12 +18,11 @@ class DeparturePage() extends TableFormPage{
 
   override def formItems: Seq[Frag] = Seq[Frag](
     section(
-      div(cls:="mdc-text-field")(
+      MDCTextFieldComponent(
         timeField,
-        "(prázdné políčko se vyplní po odeslání)",
-        label(cls:="mdc-floating-label", `for`:="departure-time")("Čas odchodu (nepovinné)"),
-        div(cls:="mdc-line-ripple"),
-      )
+        "Čas odchodu (nepovinné)",
+        Seq("(prázdné políčko se vyplní po odeslání)")
+      ),
     ),
     participantSelection.content
   )
