@@ -24,6 +24,7 @@ class ArrivalView(implicit protected val applicationContext: ApplicationContext)
       MDCTextFieldComponent(
         timeField,
         "Čas příchodu",
+        Seq("(předvyplněno automaticky)")
       )
     ),
     participantSelection.content
