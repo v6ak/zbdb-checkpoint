@@ -10,7 +10,7 @@ import org.scalajs.dom.Element
 import scalatags.JsDom.all._
 import scalatags.{JsDom, generic}
 
-class RootView(applicationContext: ApplicationContext) extends ContainerView {
+class RootView(implicit applicationContext: ApplicationContext) extends ContainerView {
 
   private def item(state: RoutingState, icon: String, name: String): JsDom.Modifier = {
     val classNameProp = applicationContext.application.currentStateProperty.transform(currentState => if(currentState == state) " mdc-list-item--activated" else "").transform("mdc-list-item"+_)

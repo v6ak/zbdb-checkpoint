@@ -7,7 +7,7 @@ import io.udash._
 class StatesToViewFactoryDef(implicit applicationContext: ApplicationContext) extends ViewFactoryRegistry[RoutingState] {
   def matchStateToResolver(state: RoutingState): ViewFactory[_ <: RoutingState] =
     state match {
-      case RootState => new StaticViewFactory(() => new RootView(applicationContext))
+      case RootState => new StaticViewFactory(() => new RootView())
       case TableState => new StaticViewFactory(() => new TableView())
       case StatisticsState => new StaticViewFactory(() => new StatisticsView())
       case DepartureState => new StaticViewFactory(() => new DepartureView())
