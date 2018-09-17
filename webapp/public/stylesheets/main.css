@@ -41,3 +41,7 @@ a.material-icons {
         background-size: contain;
     }
 }
+.name-autocomplete{
+    display: inline-flex;
+    margin-left: 16px;
+}

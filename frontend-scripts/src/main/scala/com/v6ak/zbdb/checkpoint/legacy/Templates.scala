@@ -99,7 +99,7 @@ object Templates {
     statusPlaceholder = Descriptions(participant.state)
   )
 
-  def participantSelectionListItemStructure(deleteHandlerOption: Option[() => Unit], icon: String, namePlaceholder: Frag, statusPlaceholder: Frag, additionalClasses: String = ""): JsDom.TypedTag[LI] = {
+  def participantSelectionListItemStructure(deleteHandlerOption: Option[() => Unit], icon: String, namePlaceholder: Modifier, statusPlaceholder: Modifier, additionalClasses: String = ""): JsDom.TypedTag[LI] = {
     li(cls:="mdc-list-item "+additionalClasses)(
       span(cls:="mdc-list-item__graphic", role:="presentation")(
         i(cls:="material-icons")(icon)
