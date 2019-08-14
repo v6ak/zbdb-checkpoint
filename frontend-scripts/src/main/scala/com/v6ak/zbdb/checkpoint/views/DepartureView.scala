@@ -7,7 +7,7 @@ import com.v6ak.zbdb.checkpoint.components.ParticipantsSelectionComponent
 import org.scalajs.dom.html.Input
 import scalatags.JsDom.all._
 
-class DepartureView(implicit protected val applicationContext: ApplicationContext) extends TableFormView{
+class DepartureView(sheetId: String)(implicit protected val applicationContext: ApplicationContext) extends TableFormView(sheetId){
 
   override def pageTitle: String = "Odchod ze stanoviště"
 

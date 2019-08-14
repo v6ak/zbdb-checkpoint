@@ -13,9 +13,11 @@ sealed abstract class ContainerRoutingState(parentState: Option[ContainerRouting
 //  extends RoutingState(parentState) with FinalState
 
 case object RootState extends ContainerRoutingState(None)
-case object TableState extends ContainerRoutingState(Some(RootState))
-case object StatisticsState extends ContainerRoutingState(Some(RootState))
-case object AboutState extends ContainerRoutingState(Some(RootState))
-case object ArrivalState extends ContainerRoutingState(Some(TableState))
-case object DepartureState extends ContainerRoutingState(Some(TableState))
-case object EndState extends ContainerRoutingState(Some(TableState))
+case object SelectSheetState extends ContainerRoutingState(Some(RootState))
+case class SheetOpenedState(sheetId: String) extends ContainerRoutingState(Some(RootState))
+case class TableState(sheetId: String) extends ContainerRoutingState(Some(SheetOpenedState(sheetId)))
+case class StatisticsState(sheetId: String) extends ContainerRoutingState(Some(SheetOpenedState(sheetId)))
+case class AboutState(sheetId: String) extends ContainerRoutingState(Some(SheetOpenedState(sheetId)))
+case class ArrivalState(sheetId: String) extends ContainerRoutingState(Some(TableState(sheetId)))
+case class DepartureState(sheetId: String) extends ContainerRoutingState(Some(TableState(sheetId)))
+case class EndState(sheetId: String) extends ContainerRoutingState(Some(TableState(sheetId)))

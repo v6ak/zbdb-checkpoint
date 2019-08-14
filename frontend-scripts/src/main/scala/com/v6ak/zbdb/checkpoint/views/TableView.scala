@@ -7,19 +7,19 @@ import com.v6ak.zbdb.checkpoint.data.DataStub
 import com.v6ak.zbdb.checkpoint.routing._
 import scalatags.JsDom.all._
 
-class TableView(implicit applicationContext: ApplicationContext) extends SwitchingContainerView {
+class TableView(sheetId: String)(implicit applicationContext: ApplicationContext) extends SwitchingContainerView {
   override def content: Modifier = div(
-    appHeader(applicationContext.title),
+    appHeader(Todo.sheetTitle(sheetId)),
     appContent(
       div(cls := "mdc-card",
         div(cls := "mdc-card__actions",
-          a(href := linkTo(ArrivalState), cls := "mdc-button mdc-button--raised")(
+          a(href := linkTo(ArrivalState(sheetId)), cls := "mdc-button mdc-button--raised")(
             i(cls := "material-icons mdc-button__icon", "add"), "příchod"
           ),
-          a(href := linkTo(DepartureState), cls := "mdc-button mdc-button--raised")(
+          a(href := linkTo(DepartureState(sheetId)), cls := "mdc-button mdc-button--raised")(
             i(cls := "material-icons mdc-button__icon", "remove"), "odchod"
           ),
-          a(href := linkTo(EndState), cls := "mdc-button mdc-button--raised")(
+          a(href := linkTo(EndState(sheetId)), cls := "mdc-button mdc-button--raised")(
             i(cls := "material-icons mdc-button__icon", "clear"), "konec"
           )
         )

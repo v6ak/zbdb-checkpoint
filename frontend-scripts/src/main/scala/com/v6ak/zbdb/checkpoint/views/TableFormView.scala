@@ -10,7 +10,7 @@ import org.scalajs.dom.raw.HTMLInputElement
 import scalatags.JsDom.all._
 import scalatags.generic
 
-abstract class TableFormView extends ContainerView with ListenerView{
+abstract class TableFormView(sheetId: String) extends ContainerView with ListenerView{
 
   protected implicit def applicationContext: ApplicationContext
 
@@ -21,7 +21,7 @@ abstract class TableFormView extends ContainerView with ListenerView{
   def primaryField: HTMLInputElement
 
   override def getTemplate: generic.Modifier[Element] = Seq(
-    dialogHeader(pageTitle, TableState),
+    dialogHeader(pageTitle, TableState(sheetId)),
     main(role:="main", cls:="mdc-toolbar-fixed-adjust")(
       formItems
     )

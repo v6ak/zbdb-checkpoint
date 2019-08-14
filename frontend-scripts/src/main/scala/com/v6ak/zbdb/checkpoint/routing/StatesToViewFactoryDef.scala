@@ -8,11 +8,13 @@ class StatesToViewFactoryDef(implicit applicationContext: ApplicationContext) ex
   def matchStateToResolver(state: RoutingState): ViewFactory[_ <: RoutingState] =
     state match {
       case RootState => new StaticViewFactory(() => new RootView())
-      case TableState => new StaticViewFactory(() => new TableView())
-      case StatisticsState => new StaticViewFactory(() => new StatisticsView())
-      case DepartureState => new StaticViewFactory(() => new DepartureView())
-      case ArrivalState => new StaticViewFactory(() => new ArrivalView())
-      case EndState => new StaticViewFactory(() => new EndView())
-      case AboutState => new StaticViewFactory(() => new AboutView())
+      case SheetOpenedState(sheetId) => new StaticViewFactory(() => new OpenedSheetView(sheetId))
+      case SelectSheetState => new StaticViewFactory(() => new SelectSheetView())
+      case TableState(sheetId) => new StaticViewFactory(() => new TableView(sheetId))
+      case StatisticsState(sheetId) => new StaticViewFactory(() => new StatisticsView(sheetId))
+      case DepartureState(sheetId) => new StaticViewFactory(() => new DepartureView(sheetId))
+      case ArrivalState(sheetId) => new StaticViewFactory(() => new ArrivalView(sheetId))
+      case EndState(sheetId) => new StaticViewFactory(() => new EndView(sheetId))
+      case AboutState(sheetId) => new StaticViewFactory(() => new AboutView())
     }
 }

@@ -7,7 +7,7 @@ import com.v6ak.zbdb.checkpoint.components.ParticipantsSelectionComponent
 import org.scalajs.dom.html.Input
 import scalatags.JsDom.all._
 
-class ArrivalView(implicit protected val applicationContext: ApplicationContext) extends TableFormView{
+class ArrivalView(sheetId: String)(implicit protected val applicationContext: ApplicationContext) extends TableFormView(sheetId){
 
   private def formattedCurrentTime = {
     val now = new scala.scalajs.js.Date()

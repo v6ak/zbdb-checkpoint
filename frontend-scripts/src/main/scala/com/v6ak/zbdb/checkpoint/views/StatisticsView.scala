@@ -7,9 +7,9 @@ import org.scalajs.dom.Element
 import scalatags.JsDom.all._
 import scalatags.generic
 
-class StatisticsView(implicit applicationContext: ApplicationContext) extends SwitchingContainerView {
+class StatisticsView(sheetId: String)(implicit applicationContext: ApplicationContext) extends SwitchingContainerView {
   override def content: generic.Modifier[Element] = div(
-    appHeader("Statistiky pro " + applicationContext.title),
+    appHeader("Statistiky pro " + Todo.sheetTitle(sheetId)),
     appContent(
       ul(cls := "mdc-list mdc-list--two-line", id := "stats"){
         val stats = DataStub.participants.groupBy(_.state).mapValues(_.size).withDefaultValue(0)

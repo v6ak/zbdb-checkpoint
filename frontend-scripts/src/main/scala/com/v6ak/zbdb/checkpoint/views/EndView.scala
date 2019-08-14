@@ -8,7 +8,7 @@ import org.scalajs.dom.html.Input
 import scalatags.JsDom.all._
 
 
-class EndView(implicit protected val applicationContext: ApplicationContext) extends TableFormView{
+class EndView(sheetId: String)(implicit protected val applicationContext: ApplicationContext) extends TableFormView(sheetId){
   override def pageTitle: String = "Ukončení účasti v pochodu"
 
   private val participantSelection = new ParticipantsSelectionComponent("end-participant-selection")
